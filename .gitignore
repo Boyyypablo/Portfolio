@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+.env
+.env.local
+*.log
+*.pdf
+foto prof.png
+**/foto prof.png
+.tmp-nuuma-2026/
+.vercel
+

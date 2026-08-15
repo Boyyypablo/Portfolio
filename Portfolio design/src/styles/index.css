@@ -1,0 +1,13 @@
+@import 'tailwindcss' source(none);
+@source '../../**/*.{js,ts,jsx,tsx}';
+@import './default_theme.css';
+@import './globals.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+.portfolio-page section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

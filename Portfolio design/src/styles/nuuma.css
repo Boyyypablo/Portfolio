@@ -1,0 +1,10 @@
+.nuuma-root {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #ffffff;
+  color: #111827;
+}
+
+.nuuma-root a {
+  text-decoration: none;
+}

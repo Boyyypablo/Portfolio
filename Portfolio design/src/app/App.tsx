@@ -1,0 +1,27 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router";
+import { LanguageProvider } from "./context/LanguageContext";
+import { ScrollToTop } from "./components/ScrollToTop";
+import PortfolioPage from "./pages/PortfolioPage";
+
+const ColorimetriaPage = lazy(() => import("./pages/ColorimetriaPage"));
+const NuumaPage = lazy(() => import("./pages/NuumaPage"));
+
+function PageFallback() {
+  return <div className="min-h-screen bg-[#FBF7F4]" aria-hidden />;
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <ScrollToTop />
+      <Suspense fallback={<PageFallback />}>
+        <Routes>
+          <Route path="/" element={<PortfolioPage />} />
+          <Route path="/projetos/colorimetria" element={<ColorimetriaPage />} />
+          <Route path="/projetos/nuuma" element={<NuumaPage />} />
+        </Routes>
+      </Suspense>
+    </LanguageProvider>
+  );
+}
