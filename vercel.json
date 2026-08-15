@@ -1,0 +1,8 @@
+{
+  "installCommand": "npm install --prefix \"Portfolio design\"",
+  "buildCommand": "npm run build --prefix \"Portfolio design\"",
+  "outputDirectory": "Portfolio design/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
