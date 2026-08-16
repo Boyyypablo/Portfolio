@@ -4,6 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { projects } from "../data/projects";
 import { Cascade } from "./Cascade";
 import { GlowingLogo } from "./GlowingLogo";
+import clusterLogo from "../projects/cluster/logo.png";
 
 export function Projects() {
   const { t, language } = useLanguage();
@@ -32,6 +33,19 @@ export function Projects() {
                     aria-label={project.imageAlt}
                   >
                     <GlowingLogo size="cover" bg="light" />
+                  </div>
+                ) : project.cover === "cluster-logo" ? (
+                  <div
+                    className="flex h-full w-full items-center justify-center px-10"
+                    style={{ backgroundColor: "#0c0e0d" }}
+                    role="img"
+                    aria-label={project.imageAlt}
+                  >
+                    <img
+                      src={clusterLogo}
+                      alt={project.imageAlt}
+                      className="max-h-[72%] max-w-[82%] object-contain"
+                    />
                   </div>
                 ) : (
                   <img

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+}
+
+:root {
+  --background: #0c0e0d;
+  --foreground: #e8e4de;
+  --card: #141917;
+  --card-foreground: #e8e4de;
+  --primary: #3a8b7c;
+  --primary-foreground: #ffffff;
+  --secondary: #1e2620;
+  --secondary-foreground: #c8c4be;
+  --muted: #1a1f1d;
+  --muted-foreground: #7a8078;
+  --accent: #7b5470;
+  --accent-foreground: #ffffff;
+  --border: rgba(232, 228, 222, 0.08);
+  --ring: #3a8b7c;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Reveal system — elements start hidden, anime.js fades them in */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* Hide scrollbar but allow scrolling */
+::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+html:hover::-webkit-scrollbar {
+  width: 4px;
+  opacity: 1;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(58, 139, 124, 0.4);
+  border-radius: 2px;
+}

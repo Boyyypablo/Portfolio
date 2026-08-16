@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
+
+.cluster-root {
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #0c0e0d;
+  color: #e8e4de;
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cluster-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cluster-root * {
+  box-sizing: border-box;
+}
+
+@keyframes clusterPulseH {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes clusterFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cluster-root .hero-tag,
+.cluster-root .hero-title,
+.cluster-root .hero-sub,
+.cluster-root .hero-cta {
+  animation: clusterFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cluster-root .hero-tag {
+  animation-delay: 0.3s;
+}
+
+.cluster-root .hero-title {
+  animation-duration: 0.9s;
+  animation-delay: 0.5s;
+}
+
+.cluster-root .hero-sub {
+  animation-delay: 0.9s;
+}
+
+.cluster-root .hero-cta {
+  animation-delay: 1.1s;
+}
+
+.cluster-root .cluster-scroll-hint {
+  animation: clusterPulseH 1.8s ease-in-out infinite;
+}
+
+@media (max-width: 900px) {
+  .cluster-territory-grid,
+  .cluster-contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    overflow: auto;
+    align-content: start;
+    padding-top: 96px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .cluster-esg-grid,
+  .cluster-method-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cluster-sticky-panel {
+    overflow: auto !important;
+    height: 100dvh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cluster-root .hero-tag,
+  .cluster-root .hero-title,
+  .cluster-root .hero-sub,
+  .cluster-root .hero-cta,
+  .cluster-root .cluster-scroll-hint {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

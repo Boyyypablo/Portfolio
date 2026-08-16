@@ -8,7 +8,7 @@ export interface Project {
   tags: string[];
   image?: string;
   imageAlt: string;
-  cover?: "glowing-logo-light";
+  cover?: "glowing-logo-light" | "cluster-logo";
   path: string;
 }
 
@@ -37,5 +37,17 @@ export const projects: Project[] = [
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=500&fit=crop&auto=format&q=70",
     imageAlt: "Preview do projeto NUUMA",
     path: "/projetos/nuuma",
+  },
+  {
+    id: "cluster",
+    title: "Cluster Mining",
+    description: {
+      pt: "Landing page da Cluster Mining para o Projeto Limoeiro — exploração mineral responsável de níquel, cobre e PGE em Pernambuco.",
+      en: "Cluster Mining landing page for the Limoeiro Project — responsible nickel, copper and PGE mineral exploration in Pernambuco.",
+    },
+    tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
+    imageAlt: "Logo Cluster Mining",
+    cover: "cluster-logo",
+    path: "/projetos/cluster",
   },
 ];
