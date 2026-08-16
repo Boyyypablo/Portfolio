@@ -103,7 +103,7 @@ export function LandingHome() {
         aria-label="Principal"
       >
         <a href="#" className="lp-nav-brand font-display">
-          Colorimetria
+          Glowing
         </a>
 
         <div className="lp-nav-desktop">
@@ -378,10 +378,10 @@ export function LandingHome() {
 
       <footer className="lp-footer">
         <p className="font-display text-[0.95rem] text-[rgba(250,247,240,0.4)]">
-          Colorimetria
+          Glowing
         </p>
         <p className="text-[0.75rem] tracking-[0.08em] text-[rgba(250,247,240,0.25)]">
-          © {new Date().getFullYear()} · Colorimetria pessoal · Dados tratados
+          © {new Date().getFullYear()} · Glowing · Dados tratados
           conforme a LGPD
         </p>
       </footer>

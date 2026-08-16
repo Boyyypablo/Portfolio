@@ -1,4 +1,5 @@
 import { useLanguage } from "../context/LanguageContext";
+import { Cascade } from "./Cascade";
 
 export function Skills() {
   const { t, language } = useLanguage();
@@ -79,16 +80,17 @@ export function Skills() {
   return (
     <section className="py-20 bg-gradient-to-br from-[#FBF7F4] via-white to-[#E5DED2]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <Cascade className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-4 text-[#232323]">{t("skills.title")}</h2>
           <p className="text-lg text-[#685D54]">{t("skills.description")}</p>
-        </div>
+        </Cascade>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
-            <div
+            <Cascade
               key={categoryIndex}
               className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]"
+              delay={categoryIndex * 90}
             >
               <div
                 className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${category.color} text-white mb-6`}
@@ -103,7 +105,7 @@ export function Skills() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Cascade>
           ))}
         </div>
       </div>

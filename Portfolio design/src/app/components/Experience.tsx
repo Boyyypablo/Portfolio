@@ -1,5 +1,6 @@
 import { Award, Briefcase, Calendar, GraduationCap } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { Cascade } from "./Cascade";
 
 export function Experience() {
   const { t } = useLanguage();
@@ -74,16 +75,17 @@ export function Experience() {
   return (
     <section id="experience" className="py-20 bg-gradient-to-br from-[#E5DED2] via-[#FBF7F4] to-[#E5DED2]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <Cascade className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-4 text-[#232323]">{t("experience.title")}</h2>
           <p className="text-lg text-[#685D54]">{t("experience.description")}</p>
-        </div>
+        </Cascade>
 
         <div className="max-w-4xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
-            <div
+            <Cascade
               key={`${exp.company}-${exp.role}`}
-              className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2] hover:shadow-lg transition-shadow"
+              className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2] hover:shadow-lg"
+              delay={index * 90}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                 <div className="flex-1">
@@ -111,15 +113,17 @@ export function Experience() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Cascade>
           ))}
         </div>
 
         <div className="max-w-4xl mx-auto mt-16">
-          <h3 className="text-3xl mb-8 text-[#232323] text-center">{t("education.title")}</h3>
+          <Cascade>
+            <h3 className="text-3xl mb-8 text-[#232323] text-center">{t("education.title")}</h3>
+          </Cascade>
 
           <div className="space-y-6">
-            <div className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]">
+            <Cascade className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]" delay={80}>
               <div className="flex flex-col md:flex-row md:items-start md:justify-between">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 p-2 rounded-full bg-gradient-to-br from-[#A39382] to-[#685D54]">
@@ -136,9 +140,9 @@ export function Experience() {
                   <span className="text-sm">{t("education.period")}</span>
                 </div>
               </div>
-            </div>
+            </Cascade>
 
-            <div className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]">
+            <Cascade className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]" delay={160}>
               <div className="flex flex-col md:flex-row md:items-start md:justify-between">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 p-2 rounded-full bg-gradient-to-br from-[#A39382] to-[#685D54]">
@@ -154,15 +158,17 @@ export function Experience() {
                   <span className="text-sm">{t("education.ifb.period")}</span>
                 </div>
               </div>
-            </div>
+            </Cascade>
           </div>
         </div>
 
         <div className="max-w-4xl mx-auto mt-16">
-          <h3 className="text-3xl mb-8 text-[#232323] text-center">{t("certs.title")}</h3>
+          <Cascade>
+            <h3 className="text-3xl mb-8 text-[#232323] text-center">{t("certs.title")}</h3>
+          </Cascade>
           <div className="space-y-6">
-            {certifications.map((cert) => (
-              <div key={cert.title} className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]">
+            {certifications.map((cert, index) => (
+              <Cascade key={cert.title} className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]" delay={index * 90}>
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
                   <div className="flex items-start gap-3">
                     <div className="mt-1 p-2 rounded-full bg-gradient-to-br from-[#A39382] to-[#685D54]">
@@ -178,7 +184,7 @@ export function Experience() {
                     <span className="text-sm">{cert.period}</span>
                   </div>
                 </div>
-              </div>
+              </Cascade>
             ))}
           </div>
         </div>

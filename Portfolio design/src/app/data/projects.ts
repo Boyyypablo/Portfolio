@@ -6,24 +6,24 @@ export interface Project {
     en: string;
   };
   tags: string[];
-  image: string;
+  image?: string;
   imageAlt: string;
+  cover?: "glowing-logo-light";
   path: string;
 }
 
 export const projects: Project[] = [
   {
-    id: "colorimetria",
-    title: "Colorimetria",
+    id: "glowing",
+    title: "Glowing",
     description: {
-      pt: "Landing page para uma consultora de colorimetria pessoal.",
-      en: "Landing page for a personal color analysis consultant.",
+      pt: "Landing page Glowing para consultoria em colorimetria pessoal.",
+      en: "Glowing landing page for personal color analysis consulting.",
     },
     tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
-    image:
-      "https://images.unsplash.com/photo-1563170446-9c3c0622d8a9?w=800&h=500&fit=crop&auto=format&q=70",
-    imageAlt: "Preview do projeto Colorimetria",
-    path: "/projetos/colorimetria",
+    imageAlt: "Logo Glowing no modo claro",
+    cover: "glowing-logo-light",
+    path: "/projetos/glowing",
   },
   {
     id: "nuuma",

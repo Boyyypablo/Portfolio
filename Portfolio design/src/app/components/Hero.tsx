@@ -1,5 +1,6 @@
 import { ArrowDown, MapPin } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { Cascade } from "./Cascade";
 
 const profileImage = "/foto-prof.png";
 
@@ -14,7 +15,7 @@ export function Hero() {
       <div className="container mx-auto px-6 z-10">
         <div className="text-center">
           <div className="flex flex-col items-center mb-6">
-            <div className="mb-6">
+            <Cascade className="mb-6" delay={0}>
               <img
                 src={profileImage}
                 alt="Pablo dos Santos Basilio"
@@ -22,33 +23,39 @@ export function Hero() {
                 height={160}
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-top border-4 border-white shadow-lg shadow-[#685D54]/20"
               />
-            </div>
+            </Cascade>
 
-            <h1
-              className="text-5xl md:text-7xl text-[#232323]"
-              style={{ fontFamily: "'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', serif" }}
-            >
-              {t("header.name")}
-            </h1>
+            <Cascade delay={90}>
+              <h1
+                className="text-5xl md:text-7xl text-[#232323]"
+                style={{ fontFamily: "'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', serif" }}
+              >
+                {t("header.name")}
+              </h1>
+            </Cascade>
           </div>
 
-          <div className="flex flex-col items-center gap-1 mb-4">
+          <Cascade className="flex flex-col items-center gap-1 mb-4" delay={180}>
             <div className="flex items-center justify-center gap-2">
               <MapPin className="w-4 h-4 text-[#A39382]" />
               <span className="text-[#A39382]">{t("location")}</span>
             </div>
             <span className="text-sm text-[#A39382]">{t("header.languages")}</span>
-          </div>
+          </Cascade>
 
-          <p className="text-xl md:text-2xl text-[#685D54] mb-8 max-w-2xl mx-auto">
-            {t("header.role")}
-          </p>
+          <Cascade delay={270}>
+            <p className="text-xl md:text-2xl text-[#685D54] mb-8 max-w-2xl mx-auto">
+              {t("header.role")}
+            </p>
+          </Cascade>
 
-          <p className="text-base md:text-lg text-[#685D54] max-w-3xl mx-auto mb-12">
-            {t("header.description")}
-          </p>
+          <Cascade delay={360}>
+            <p className="text-base md:text-lg text-[#685D54] max-w-3xl mx-auto mb-12">
+              {t("header.description")}
+            </p>
+          </Cascade>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <Cascade className="flex flex-wrap gap-4 justify-center" delay={450}>
             <button
               type="button"
               className="px-8 py-3 bg-[#685D54] text-[#FBF7F4] rounded-full hover:bg-[#232323] transition-colors shadow-lg shadow-[#685D54]/20"
@@ -66,12 +73,14 @@ export function Hero() {
             >
               LinkedIn
             </a>
-          </div>
+          </Cascade>
         </div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <ArrowDown className="w-6 h-6 text-[#A39382]" />
+        <Cascade delay={540}>
+          <ArrowDown className="w-6 h-6 text-[#A39382]" />
+        </Cascade>
       </div>
     </section>
   );

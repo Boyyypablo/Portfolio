@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ScrollToTop } from "./components/ScrollToTop";
 import PortfolioPage from "./pages/PortfolioPage";
@@ -18,7 +18,8 @@ export default function App() {
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route path="/" element={<PortfolioPage />} />
-          <Route path="/projetos/colorimetria" element={<ColorimetriaPage />} />
+          <Route path="/projetos/glowing" element={<ColorimetriaPage />} />
+          <Route path="/projetos/colorimetria" element={<Navigate to="/projetos/glowing" replace />} />
           <Route path="/projetos/nuuma" element={<NuumaPage />} />
         </Routes>
       </Suspense>

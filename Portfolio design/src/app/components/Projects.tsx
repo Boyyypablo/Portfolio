@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { useLanguage } from "../context/LanguageContext";
 import { projects } from "../data/projects";
+import { Cascade } from "./Cascade";
+import { GlowingLogo } from "./GlowingLogo";
 
 export function Projects() {
   const { t, language } = useLanguage();
@@ -9,32 +11,41 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-[#FBF7F4] via-white to-[#E5DED2]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <Cascade className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl mb-4 text-[#232323]">{t("projects.title")}</h2>
           <p className="text-lg text-[#685D54] max-w-2xl mx-auto">{t("projects.description")}</p>
-        </div>
+        </Cascade>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project) => (
-            <article
+          {projects.map((project, index) => (
+            <Cascade
               key={project.id}
-              className="group bg-white/90 rounded-3xl overflow-hidden border border-[#E5DED2] hover:shadow-lg transition-shadow"
+              className="group bg-white/90 rounded-3xl overflow-hidden border border-[#E5DED2] hover:shadow-lg"
+              delay={index * 120}
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.imageAlt}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#232323]/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-2xl text-white">{project.title}</h3>
-                </div>
+                {project.cover === "glowing-logo-light" ? (
+                  <div
+                    className="flex h-full w-full items-center justify-center px-8"
+                    style={{ backgroundColor: "#faf7f0" }}
+                    role="img"
+                    aria-label={project.imageAlt}
+                  >
+                    <GlowingLogo size="cover" bg="light" />
+                  </div>
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
               </div>
 
               <div className="p-8">
+                <h3 className="text-2xl text-[#232323] mb-4">{project.title}</h3>
                 <p className="text-[#685D54] mb-6 leading-relaxed">
                   {project.description[language]}
                 </p>
@@ -58,7 +69,7 @@ export function Projects() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-            </article>
+            </Cascade>
           ))}
         </div>
       </div>

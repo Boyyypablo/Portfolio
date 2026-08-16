@@ -45,6 +45,10 @@ const translations = {
     "contact.namePlaceholder": "Seu nome",
     "contact.emailPlaceholder": "seu@email.com",
     "contact.messagePlaceholder": "Sua mensagem...",
+    "contact.required": "Preencha nome, e-mail e mensagem.",
+    "contact.invalidEmail": "Informe um e-mail válido.",
+    "contact.sent": "Pronto. Seu aplicativo de e-mail abriu com a mensagem.",
+    "contact.sending": "Abrindo e-mail...",
 
     "footer.rights": "Feito com 💜 e código.",
     "location": "Brasília, DF, Brasil",
@@ -138,6 +142,10 @@ const translations = {
     "contact.namePlaceholder": "Your name",
     "contact.emailPlaceholder": "your@email.com",
     "contact.messagePlaceholder": "Your message...",
+    "contact.required": "Please fill in name, email, and message.",
+    "contact.invalidEmail": "Please enter a valid email.",
+    "contact.sent": "Done. Your email app opened with the message.",
+    "contact.sending": "Opening email...",
 
     "footer.rights": "Made with 💜 and code.",
     "location": "Brasília, DF, Brazil",

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Fraunces:ital,opsz,wght@1,9..144,300&display=swap");
 @import 'tailwindcss' source(none);
 @source '../../**/*.{js,ts,jsx,tsx}';
 @import './default_theme.css';
@@ -7,7 +8,24 @@ html {
   scroll-behavior: smooth;
 }
 
-.portfolio-page section {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
+.cascade {
+  opacity: 0;
+  transform: translateY(2.25rem);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--cascade-delay, 0ms);
+}
+
+.cascade.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cascade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
