@@ -19,9 +19,12 @@ export function Hero() {
           <div className="text-left">
             <Cascade delay={0}>
               <h1
-                className="mb-6 text-5xl leading-none text-[#232323] md:text-6xl xl:text-[99px] xl:leading-none"
+                className="mb-6 text-[clamp(3.9rem,9.6vw,8.1rem)] leading-[0.95] tracking-tight text-[#232323]"
                 style={{
                   fontFamily: "'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', serif",
+                  fontSize: "clamp(3.9rem, 9.6vw, 8.1rem)",
+                  lineHeight: 0.95,
+                  fontWeight: 400,
                 }}
               >
                 {t("header.name")}
