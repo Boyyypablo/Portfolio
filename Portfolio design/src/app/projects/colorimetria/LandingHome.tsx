@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { ArrowLeft } from "lucide-react";
 import {
   LANDING_IMAGES,
   LANDING_SEASON_SWATCHES,
@@ -102,54 +104,78 @@ export function LandingHome() {
         className={`lp-nav${scrolled ? " lp-nav--scrolled" : ""}`}
         aria-label="Principal"
       >
-        <a href="#" className="lp-nav-brand font-display">
-          Glowing
-        </a>
-
-        <div className="lp-nav-desktop">
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="lp-nav-link">
-              {item.label}
-            </a>
-          ))}
-          <a href="#comecar" className="lp-btn lp-btn--terracotta">
-            Começar
+        <div className="lp-shell lp-nav__inner">
+          <a href="#" className="lp-nav-brand font-display">
+            Glowing
           </a>
-        </div>
 
-        <button
-          type="button"
-          className="lp-nav-burger"
-          aria-expanded={menuOpen}
-          aria-controls="lp-mobile-menu"
-          onClick={() => setMenuOpen((o) => !o)}
-        >
-          <span className="sr-only">{menuOpen ? "Fechar menu" : "Abrir menu"}</span>
-          <span aria-hidden className={menuOpen ? "lp-burger-x" : "lp-burger"}>
-            {menuOpen ? "✕" : "☰"}
-          </span>
-        </button>
+          <div className="lp-nav-links">
+            {NAV.map((item) => (
+              <a key={item.href} href={item.href} className="lp-nav-link">
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="lp-nav-desktop">
+            <a href="#comecar" className="lp-btn lp-btn--terracotta">
+              Começar
+            </a>
+            <Link
+              to="/"
+              state={{ scrollTo: "projects" }}
+              className="lp-nav-back"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Portfólio
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            className="lp-nav-burger"
+            aria-expanded={menuOpen}
+            aria-controls="lp-mobile-menu"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span className="sr-only">{menuOpen ? "Fechar menu" : "Abrir menu"}</span>
+            <span aria-hidden className={menuOpen ? "lp-burger-x" : "lp-burger"}>
+              {menuOpen ? "✕" : "☰"}
+            </span>
+          </button>
+        </div>
       </nav>
 
       {menuOpen ? (
         <div id="lp-mobile-menu" className="lp-mobile-menu">
-          {NAV.map((item) => (
+          <div className="lp-shell flex flex-col gap-3">
+            {NAV.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="lp-mobile-menu__link"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
             <a
-              key={item.href}
-              href={item.href}
-              className="lp-mobile-menu__link"
+              href="#comecar"
+              className="lp-btn lp-btn--terracotta mt-2 w-full text-center"
               onClick={() => setMenuOpen(false)}
             >
-              {item.label}
+              Começar análise
             </a>
-          ))}
-          <a
-            href="#comecar"
-            className="lp-btn lp-btn--terracotta mt-2 w-full text-center"
-            onClick={() => setMenuOpen(false)}
-          >
-            Começar análise
-          </a>
+            <Link
+              to="/"
+              state={{ scrollTo: "projects" }}
+              className="lp-nav-back mt-1 self-start"
+              onClick={() => setMenuOpen(false)}
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Voltar ao portfólio
+            </Link>
+          </div>
         </div>
       ) : null}
 
@@ -207,11 +233,13 @@ export function LandingHome() {
       </section>
 
       <section className="lp-manifesto">
-        <blockquote className="font-display">
-          &ldquo;Colorimetria não é sobre seguir tendências — é sobre encontrar
-          a harmonia entre quem você é e como o mundo te vê.&rdquo;
-        </blockquote>
-        <p className="lp-manifesto__by">Consultora de imagem</p>
+        <div className="lp-shell">
+          <blockquote className="font-display">
+            &ldquo;Colorimetria não é sobre seguir tendências — é sobre encontrar
+            a harmonia entre quem você é e como o mundo te vê.&rdquo;
+          </blockquote>
+          <p className="lp-manifesto__by">Consultora de imagem</p>
+        </div>
       </section>
 
       <section id="servicos" className="lp-section scroll-mt-24">
@@ -239,7 +267,7 @@ export function LandingHome() {
       </section>
 
       <section id="como-funciona" className="lp-section lp-section--linen scroll-mt-24">
-        <div className="lp-section__inner max-w-[1100px]">
+        <div className="lp-section__inner">
           <p className="lp-eyebrow">O processo</p>
           <h2 className="lp-h2 font-display mb-16">
             Como funciona
@@ -318,22 +346,24 @@ export function LandingHome() {
       </section>
 
       <section className="lp-testimonial">
-        <p className="lp-eyebrow !text-[rgba(250,247,240,0.65)]">Depoimento</p>
-        <blockquote className="font-display">
-          &ldquo;Eu nunca soube por que certas roupas me &lsquo;apagavam&rsquo;.
-          A análise revelou minha cartela de Outono Suave e tudo fez sentido —
-          eu finalmente parecia eu mesma.&rdquo;
-        </blockquote>
-        <p className="mt-8 text-[0.85rem] tracking-[0.08em] text-[rgba(250,247,240,0.75)]">
-          Juliana M. · São Paulo
-        </p>
-        <div
-          className="mt-4 flex justify-center gap-1 text-[var(--lp-blush)]"
-          aria-label="5 estrelas"
-        >
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i}>★</span>
-          ))}
+        <div className="lp-shell">
+          <p className="lp-eyebrow !text-[rgba(250,247,240,0.65)]">Depoimento</p>
+          <blockquote className="font-display">
+            &ldquo;Eu nunca soube por que certas roupas me &lsquo;apagavam&rsquo;.
+            A análise revelou minha cartela de Outono Suave e tudo fez sentido —
+            eu finalmente parecia eu mesma.&rdquo;
+          </blockquote>
+          <p className="mt-8 text-[0.85rem] tracking-[0.08em] text-[rgba(250,247,240,0.75)]">
+            Juliana M. · São Paulo
+          </p>
+          <div
+            className="mt-4 flex justify-center gap-1 text-[var(--lp-blush)]"
+            aria-label="5 estrelas"
+          >
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span key={i}>★</span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -354,36 +384,40 @@ export function LandingHome() {
       </section>
 
       <section id="comecar" className="lp-cta scroll-mt-24">
-        <p className="lp-eyebrow !text-[var(--lp-blush)]">Pronta para começar?</p>
-        <h2 className="font-display mb-8 text-[clamp(2.2rem,4vw,3.5rem)] font-light leading-[1.1] text-[var(--lp-cream)]">
-          Vamos descobrir juntas
-          <br />
-          <em className="text-[var(--lp-blush)]">a sua paleta.</em>
-        </h2>
-        <p className="mx-auto mb-12 max-w-[500px] text-base font-light leading-relaxed text-[rgba(250,247,240,0.65)]">
-          Uma foto. Sua estação. Cores que fazem sentido em você — com um plano
-          personalizado para o dia a dia.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href="#comecar" className="lp-btn lp-btn--terracotta lp-btn--lg">
-            Começar análise
-          </a>
-        </div>
-        <div className="lp-cta__meta">
-          <p>Análise online</p>
-          <p>Foto privada · LGPD</p>
-          <p>12 estações</p>
+        <div className="lp-shell">
+          <p className="lp-eyebrow !text-[var(--lp-blush)]">Pronta para começar?</p>
+          <h2 className="font-display mb-8 text-[clamp(2.2rem,4vw,3.5rem)] font-light leading-[1.1] text-[var(--lp-cream)]">
+            Vamos descobrir juntas
+            <br />
+            <em className="text-[var(--lp-blush)]">a sua paleta.</em>
+          </h2>
+          <p className="mx-auto mb-12 max-w-[500px] text-base font-light leading-relaxed text-[rgba(250,247,240,0.65)]">
+            Uma foto. Sua estação. Cores que fazem sentido em você — com um plano
+            personalizado para o dia a dia.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="#comecar" className="lp-btn lp-btn--terracotta lp-btn--lg">
+              Começar análise
+            </a>
+          </div>
+          <div className="lp-cta__meta">
+            <p>Análise online</p>
+            <p>Foto privada · LGPD</p>
+            <p>12 estações</p>
+          </div>
         </div>
       </section>
 
       <footer className="lp-footer">
-        <p className="font-display text-[0.95rem] text-[rgba(250,247,240,0.4)]">
-          Glowing
-        </p>
-        <p className="text-[0.75rem] tracking-[0.08em] text-[rgba(250,247,240,0.25)]">
-          © {new Date().getFullYear()} · Glowing · Dados tratados
-          conforme a LGPD
-        </p>
+        <div className="lp-shell" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+          <p className="font-display text-[0.95rem] text-[rgba(250,247,240,0.4)]">
+            Glowing
+          </p>
+          <p className="text-[0.75rem] tracking-[0.08em] text-[rgba(250,247,240,0.25)]">
+            © {new Date().getFullYear()} · Glowing · Dados tratados
+            conforme a LGPD
+          </p>
+        </div>
       </footer>
     </div>
   );

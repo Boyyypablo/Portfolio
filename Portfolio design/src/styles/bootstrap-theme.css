@@ -1,0 +1,97 @@
+/* Tema Bootstrap alinhado à paleta do portfólio */
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #685d54;
+  --bs-primary-rgb: 104, 93, 84;
+  --bs-secondary: #a39382;
+  --bs-secondary-rgb: 163, 147, 130;
+  --bs-dark: #232323;
+  --bs-dark-rgb: 35, 35, 35;
+  --bs-light: #fbf7f4;
+  --bs-light-rgb: 251, 247, 244;
+  --bs-body-bg: #fbf7f4;
+  --bs-body-color: #232323;
+  --bs-border-color: #e5ded2;
+  --bs-link-color: #685d54;
+  --bs-link-color-rgb: 104, 93, 84;
+  --bs-link-hover-color: #232323;
+  --bs-link-hover-color-rgb: 35, 35, 35;
+  --bs-link-decoration: none;
+  --bs-focus-ring-color: rgba(104, 93, 84, 0.35);
+  --bs-border-radius: 0.875rem;
+  --bs-border-radius-pill: 50rem;
+  --bs-btn-border-radius: 50rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: #685d54;
+  --bs-btn-border-color: #685d54;
+  --bs-btn-hover-bg: #232323;
+  --bs-btn-hover-border-color: #232323;
+  --bs-btn-active-bg: #232323;
+  --bs-btn-active-border-color: #232323;
+  --bs-btn-disabled-bg: #685d54;
+  --bs-btn-disabled-border-color: #685d54;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #685d54;
+  --bs-btn-border-color: #685d54;
+  --bs-btn-hover-bg: #685d54;
+  --bs-btn-hover-border-color: #685d54;
+  --bs-btn-hover-color: #fbf7f4;
+  --bs-btn-active-bg: #685d54;
+  --bs-btn-active-border-color: #685d54;
+  --bs-btn-active-color: #fbf7f4;
+}
+
+.form-control:focus {
+  border-color: #a39382;
+  box-shadow: 0 0 0 0.25rem rgba(163, 147, 130, 0.35);
+}
+
+/* Bootstrap reboot zera border-radius em button; restaura pills do design */
+button.rounded-pill,
+a.rounded-pill,
+.btn.rounded-pill,
+button.rounded-full,
+a.rounded-full {
+  border-radius: 50rem !important;
+}
+
+/*
+  Bootstrap aplica azul + underline em <a> (fora de @layer).
+  No portfólio, links/CTAs seguem o Figma: sem hyperlink azul.
+*/
+.portfolio-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-page a:hover,
+.portfolio-page a:focus,
+.portfolio-page a:active,
+.portfolio-page a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-page a.hero-btn-outline {
+  color: #685d54 !important;
+  border-color: #685d54;
+}
+
+.portfolio-page a.hero-btn-outline:hover {
+  color: #fff !important;
+  background-color: #685d54;
+}
+
+.portfolio-page a.cta-btn-outline {
+  color: #fff !important;
+  border-color: #fff;
+}
+
+.portfolio-page a.cta-btn-outline:hover {
+  color: #685d54 !important;
+  background-color: #fff;
+}

@@ -15,32 +15,28 @@ export function Contact() {
 
   const socialLinks = [
     {
-      icon: <Mail className="w-5 h-5" />,
+      icon: <Mail className="h-5 w-5" />,
       label: "Email",
       href: `mailto:${CONTACT_EMAIL}`,
       display: CONTACT_EMAIL,
-      color: "from-[#A39382] to-[#685D54]",
     },
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <Phone className="h-5 w-5" />,
       label: "Phone",
       href: "https://wa.link/kzfif6",
       display: "+55 (61) 99680-8636",
-      color: "from-[#685D54] to-[#A39382]",
     },
     {
-      icon: <Linkedin className="w-5 h-5" />,
+      icon: <Linkedin className="h-5 w-5" />,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/pablo-dos-santos-basilio-273b4b212/",
-      display: "linkedin.com/in/pablo-dos-santos-basilio",
-      color: "from-[#232323] to-[#685D54]",
+      href: "https://www.linkedin.com/in/psbasilio",
+      display: "linkedin.com/in/psbasilio",
     },
     {
-      icon: <Github className="w-5 h-5" />,
+      icon: <Github className="h-5 w-5" />,
       label: "GitHub",
       href: "https://github.com/Boyyypablo",
       display: "github.com/Boyyypablo",
-      color: "from-[#685D54] to-[#232323]",
     },
   ];
 
@@ -84,19 +80,42 @@ export function Contact() {
             : null;
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-[#FBF7F4] via-[#E5DED2] to-[#FBF7F4]">
+    <section id="contact" className="bg-gradient-to-br from-[#FBF7F4] via-[#E5DED2] to-[#FBF7F4] py-20">
       <div className="container mx-auto px-6">
-        <Cascade className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4 text-[#232323]">{t("contact.title")}</h2>
-          <p className="text-lg text-[#685D54] max-w-2xl mx-auto">{t("contact.description")}</p>
+        <Cascade className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl text-[#232323] md:text-5xl">{t("contact.title")}</h2>
+          <p className="mx-auto max-w-2xl text-lg text-[#685D54]">{t("contact.description")}</p>
         </Cascade>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Cascade className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]">
-              <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-                <div>
-                  <label htmlFor="name" className="block mb-2 text-[#232323]">
+        <Cascade className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-[#E5DED2] bg-[#685D54]">
+          <div className="grid gap-8 p-6 md:grid-cols-2 md:gap-10 md:p-10 lg:p-14">
+            <div>
+              <h3 className="mb-8 text-xl font-bold text-white">{t("contact.connect")}</h3>
+              <div className="space-y-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 rounded-[14px] p-3 transition-colors hover:bg-white/10"
+                  >
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-white bg-gradient-to-r from-[#685D54] to-[#A39382] text-white">
+                      {link.icon}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold text-white">{link.label}</p>
+                      <p className="truncate text-base text-white">{link.display}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-[#E5DED2] bg-white/90 p-6 md:p-8">
+              <form onSubmit={handleSubmit} noValidate>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label text-[#232323]">
                     {t("contact.name")}
                   </label>
                   <input
@@ -109,12 +128,12 @@ export function Contact() {
                       setName(event.target.value);
                       if (status !== "idle") setStatus("idle");
                     }}
-                    className="w-full px-4 py-3 rounded-xl bg-[#FBF7F4] border border-[#E5DED2] text-[#232323] focus:outline-none focus:ring-2 focus:ring-[#A39382]/50"
+                    className="form-control bg-[#FBF7F4] border-[#E5DED2] text-[#232323]"
                     placeholder={t("contact.namePlaceholder")}
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block mb-2 text-[#232323]">
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label text-[#232323]">
                     {t("contact.email")}
                   </label>
                   <input
@@ -127,12 +146,12 @@ export function Contact() {
                       setEmail(event.target.value);
                       if (status !== "idle") setStatus("idle");
                     }}
-                    className="w-full px-4 py-3 rounded-xl bg-[#FBF7F4] border border-[#E5DED2] text-[#232323] focus:outline-none focus:ring-2 focus:ring-[#A39382]/50"
+                    className="form-control bg-[#FBF7F4] border-[#E5DED2] text-[#232323]"
                     placeholder={t("contact.emailPlaceholder")}
                   />
                 </div>
-                <div>
-                  <label htmlFor="message" className="block mb-2 text-[#232323]">
+                <div className="mb-3">
+                  <label htmlFor="message" className="form-label text-[#232323]">
                     {t("contact.message")}
                   </label>
                   <textarea
@@ -144,13 +163,13 @@ export function Contact() {
                       setMessage(event.target.value);
                       if (status !== "idle") setStatus("idle");
                     }}
-                    className="w-full px-4 py-3 rounded-xl bg-[#FBF7F4] border border-[#E5DED2] text-[#232323] focus:outline-none focus:ring-2 focus:ring-[#A39382]/50 resize-none"
+                    className="form-control bg-[#FBF7F4] border-[#E5DED2] text-[#232323]"
                     placeholder={t("contact.messagePlaceholder")}
                   />
                 </div>
                 {feedback ? (
                   <p
-                    className={`text-sm ${status === "sent" ? "text-[#685D54]" : "text-[#8B4A3A]"}`}
+                    className={`mb-3 small ${status === "sent" ? "text-[#685D54]" : "text-danger"}`}
                     role="status"
                     aria-live="polite"
                   >
@@ -160,46 +179,15 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#685D54] text-white rounded-xl hover:bg-[#232323] transition-colors disabled:opacity-70"
+                  className="btn btn-primary w-100 d-inline-flex align-items-center justify-content-center gap-2 py-3"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="h-4 w-4" />
                   {status === "sending" ? t("contact.sending") : t("contact.send")}
                 </button>
               </form>
-            </Cascade>
-
-            <div className="space-y-6">
-              <Cascade className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]" delay={120}>
-                <h3 className="text-xl mb-6 text-[#232323]">{t("contact.connect")}</h3>
-                <div className="space-y-4">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#FBF7F4] transition-colors group"
-                    >
-                      <div
-                        className={`flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r ${link.color} text-white`}
-                      >
-                        {link.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm text-[#A39382]">{link.label}</p>
-                        <p className="text-[#232323] truncate">{link.display}</p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </Cascade>
-
-              <Cascade className="bg-gradient-to-br from-[#E5DED2] to-[#A39382]/30 rounded-3xl p-8 border border-[#E5DED2]" delay={200}>
-                <p className="text-[#685D54] text-center">{t("contact.available")}</p>
-              </Cascade>
             </div>
           </div>
-        </div>
+        </Cascade>
       </div>
     </section>
   );

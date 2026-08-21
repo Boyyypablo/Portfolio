@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
+import { CtaBanner } from "../components/CtaBanner";
 import { Skills } from "../components/Skills";
 import { Experience } from "../components/Experience";
 import { Projects } from "../components/Projects";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
-import { LanguageToggle } from "../components/LanguageToggle";
 
 export default function PortfolioPage() {
   const location = useLocation();
@@ -22,11 +23,12 @@ export default function PortfolioPage() {
 
   return (
     <div className="portfolio-page min-h-screen bg-gradient-to-b from-[#FBF7F4] to-[#E5DED2]">
-      <LanguageToggle />
+      <Navbar />
       <Hero />
+      <CtaBanner />
+      <Projects />
       <Skills />
       <Experience />
-      <Projects />
       <Contact />
       <Footer />
     </div>

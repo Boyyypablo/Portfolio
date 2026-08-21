@@ -1,36 +1,41 @@
-import { useLanguage } from "../context/LanguageContext";
 import { Globe } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
-export function LanguageToggle() {
+type LanguageToggleProps = {
+  variant?: "floating" | "nav";
+};
+
+export function LanguageToggle({ variant = "floating" }: LanguageToggleProps) {
   const { language, setLanguage } = useLanguage();
 
+  const shell =
+    variant === "nav"
+      ? "d-inline-flex align-items-center gap-2 rounded-pill border border-[#E5DED2] bg-white/90 px-3 py-1.5 shadow-md"
+      : "fixed top-6 right-6 z-50 d-inline-flex align-items-center gap-2 rounded-pill border border-[#E5DED2] bg-white/90 px-4 py-2 shadow-md";
+
   return (
-    <div className="fixed top-6 right-6 z-50">
-      <div className="flex items-center gap-2 bg-white/90 border border-[#E5DED2] rounded-full px-4 py-2 shadow-md">
-        <Globe className="w-4 h-4 text-[#685D54]" />
-        <button
-          type="button"
-          onClick={() => setLanguage("pt")}
-          className={`px-3 py-1 rounded-full transition-colors ${
-            language === "pt"
-              ? "bg-[#685D54] text-white"
-              : "text-[#685D54] hover:bg-[#E5DED2]/50"
-          }`}
-        >
-          PT
-        </button>
-        <button
-          type="button"
-          onClick={() => setLanguage("en")}
-          className={`px-3 py-1 rounded-full transition-colors ${
-            language === "en"
-              ? "bg-[#685D54] text-white"
-              : "text-[#685D54] hover:bg-[#E5DED2]/50"
-          }`}
-        >
-          EN
-        </button>
-      </div>
+    <div className={shell}>
+      <Globe className="h-4 w-4 text-[#685D54]" aria-hidden />
+      <button
+        type="button"
+        onClick={() => setLanguage("pt")}
+        className={`rounded-pill border-0 px-3 py-1 transition-colors ${
+          language === "pt" ? "bg-[#685D54] text-white" : "bg-transparent text-[#685D54] hover:bg-[#E5DED2]/50"
+        }`}
+        style={{ borderRadius: "50rem" }}
+      >
+        PT
+      </button>
+      <button
+        type="button"
+        onClick={() => setLanguage("en")}
+        className={`rounded-pill border-0 px-3 py-1 transition-colors ${
+          language === "en" ? "bg-[#685D54] text-white" : "bg-transparent text-[#685D54] hover:bg-[#E5DED2]/50"
+        }`}
+        style={{ borderRadius: "50rem" }}
+      >
+        EN
+      </button>
     </div>
   );
 }

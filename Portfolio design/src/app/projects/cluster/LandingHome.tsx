@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
+import { Link } from "react-router";
+import { ArrowLeft } from "lucide-react";
 import clusterLogo from "./logo.png";
+import clusterIcon from "./icon.png";
 
 function useScrollProgress(ref: RefObject<HTMLElement | null>) {
   const [progress, setProgress] = useState(0);
@@ -35,7 +38,7 @@ const WA = "https://wa.me/5561991540008";
 function Logo({ height }: { height: number }) {
   return (
     <img
-      src={clusterLogo}
+      src={clusterIcon}
       alt="Cluster Mining"
       height={height}
       style={{ height, width: "auto", objectFit: "contain", display: "block" }}
@@ -62,11 +65,11 @@ function Nav() {
         borderBottom: dark ? "1px solid rgba(232,228,222,0.06)" : "none",
       }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-10">
-        <a href="#hero" className="flex items-center">
-          <Logo height={52} />
+      <div className="cluster-shell flex items-center justify-between gap-4 py-3">
+        <a href="#hero" className="flex shrink-0 items-center">
+          <Logo height={44} />
         </a>
-        <ul className="hidden gap-7 lg:flex">
+        <ul className="hidden min-w-0 flex-1 items-center justify-center gap-6 xl:gap-7 lg:flex">
           {CHAPTERS.map((c) => (
             <li key={c.href}>
               <a
@@ -79,17 +82,27 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <a
-          href={WA}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden items-center gap-2 bg-[#3a8b7c] px-5 py-2.5 text-[11px] uppercase tracking-widest text-white transition-colors hover:bg-[#4aab9c] lg:flex"
-        >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-          WhatsApp
-        </a>
+        <div className="hidden shrink-0 items-center gap-3 lg:flex">
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#3a8b7c] px-5 py-2.5 text-[11px] uppercase tracking-widest text-white transition-colors hover:bg-[#4aab9c]"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            WhatsApp
+          </a>
+          <Link
+            to="/"
+            state={{ scrollTo: "projects" }}
+            className="inline-flex items-center gap-2 border border-white/15 px-4 py-2.5 text-[11px] uppercase tracking-widest text-[#c8c4be] transition-colors hover:border-white/30 hover:text-[#e8e4de]"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Portfólio
+          </Link>
+        </div>
         <button type="button" className="p-2 text-[#e8e4de] lg:hidden" onClick={() => setOpen(!open)} aria-label="Abrir menu">
           <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden>
             <line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" strokeWidth="1.5" />
@@ -99,7 +112,7 @@ function Nav() {
         </button>
       </div>
       {open && (
-        <div className="border-t border-[rgba(232,228,222,0.07)] bg-[#0c0e0d] px-6 py-4 lg:hidden">
+        <div className="cluster-shell border-t border-[rgba(232,228,222,0.07)] bg-[#0c0e0d] py-4 lg:hidden">
           {CHAPTERS.map((c) => (
             <a
               key={c.href}
@@ -110,6 +123,15 @@ function Nav() {
               {c.label}
             </a>
           ))}
+          <Link
+            to="/"
+            state={{ scrollTo: "projects" }}
+            onClick={() => setOpen(false)}
+            className="mt-3 flex items-center gap-2 py-3 text-sm uppercase tracking-widest text-[#3a8b7c]"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Voltar ao portfólio
+          </Link>
         </div>
       )}
     </nav>
@@ -137,45 +159,71 @@ function Hero() {
         >
           <img
             src="https://images.unsplash.com/photo-1695169152266-d9ac86fab9c5?w=1800&h=1200&fit=crop&auto=format"
-            alt="Área de exploração mineral"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.35) saturate(0.7)" }}
+            alt="Operação de mineração e exploração mineral"
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.62) saturate(0.85) contrast(1.05)" }}
           />
         </div>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0c0e0d 20%, rgba(12,14,13,0.4) 60%, transparent 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(12,14,13,0.65) 40%, transparent 80%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0c0e0d 18%, rgba(12,14,13,0.28) 55%, transparent 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(12,14,13,0.55) 35%, transparent 78%)" }} />
 
-        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 40px 100px" }}>
+        <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+          <div className="cluster-shell" style={{ paddingBottom: "100px" }}>
           <div style={{ maxWidth: "720px", transform: `translateY(${titleY}px)`, opacity: Math.max(0, titleO) }}>
-            <div className="hero-tag" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
+            <div className="hero-tag" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
               <div style={{ width: "32px", height: "1px", background: "#3a8b7c" }} />
               <span style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.22em", textTransform: "uppercase" }}>
-                Limoeiro — Província Borborema, PE
+                Mineradora · Projeto Limoeiro — PE
               </span>
             </div>
-            <div className="hero-title" style={{ marginBottom: "28px" }}>
+            <div className="hero-title" style={{ marginBottom: "18px" }}>
               <img
                 src={clusterLogo}
                 alt="Cluster Mining — Extraindo riquezas antigas, respeitando o presente, construindo um futuro."
                 style={{ width: "min(520px, 90vw)", height: "auto", display: "block" }}
               />
             </div>
-            <div className="hero-cta" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <p className="hero-sub" style={{ fontSize: "clamp(15px, 2.2vw, 18px)", color: "#e8e4de", lineHeight: 1.55, maxWidth: "540px", marginBottom: "22px" }}>
+              Somos a <strong style={{ color: "#fff", fontWeight: 500 }}>Cluster Mining</strong>, mineradora focada em exploração responsável de{" "}
+              <strong style={{ color: "#fff", fontWeight: 500 }}>níquel, cobre e metais do grupo da platina</strong> em Pernambuco.
+            </p>
+            <div className="hero-cta" style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "center" }}>
               {["Níquel", "Cobre", "PGE"].map((m) => (
                 <span
                   key={m}
                   style={{
                     padding: "6px 16px",
-                    border: "1px solid rgba(58,139,124,0.45)",
-                    color: "#3a8b7c",
+                    border: "1px solid rgba(58,139,124,0.55)",
+                    color: "#7dcec0",
                     fontSize: "11px",
                     letterSpacing: "0.16em",
                     textTransform: "uppercase",
+                    background: "rgba(12,14,13,0.35)",
                   }}
                 >
                   {m}
                 </span>
               ))}
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  marginLeft: "4px",
+                  padding: "10px 20px",
+                  background: "#3a8b7c",
+                  color: "#fff",
+                  fontSize: "11px",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Fale conosco
+              </a>
             </div>
+          </div>
           </div>
         </div>
 
@@ -192,7 +240,7 @@ function Hero() {
             opacity: Math.max(0, 1 - p * 5),
           }}
         >
-          <span style={{ fontSize: "10px", color: "#7a8078", letterSpacing: "0.2em", textTransform: "uppercase" }}>Role para descobrir</span>
+          <span style={{ fontSize: "10px", color: "#a8aea6", letterSpacing: "0.2em", textTransform: "uppercase" }}>Role para descobrir</span>
           <div className="cluster-scroll-hint" style={{ width: "1px", height: "40px", background: "rgba(58,139,124,0.6)" }} />
         </div>
       </div>
@@ -211,31 +259,44 @@ function Manifesto() {
         className="cluster-sticky-panel"
         style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        <div style={{ position: "absolute", inset: 0, opacity: p * 0.35 }}>
+        <div style={{ position: "absolute", inset: 0, opacity: 0.28 + p * 0.2 }}>
           <img
             src="https://images.unsplash.com/photo-1560872236-f1232b00263f?w=1600&h=900&fit=crop&auto=format"
-            alt=""
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.4) saturate(0.5)" }}
+            alt="Paisagem mineral"
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.55) saturate(0.7)" }}
           />
         </div>
-        <div style={{ position: "absolute", inset: 0, background: "rgba(12,14,13,0.75)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(12,14,13,0.55)" }} />
 
-        <div style={{ position: "relative", maxWidth: "900px", padding: "0 40px", textAlign: "center" }}>
+        <div className="cluster-shell" style={{ position: "relative", maxWidth: "min(900px, var(--cluster-showcase))", paddingTop: 0, paddingBottom: 0, textAlign: "center" }}>
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: "12px",
-              marginBottom: "36px",
+              marginBottom: "20px",
               opacity: p > 0.05 ? 1 : 0,
               transition: "opacity 0.6s",
             }}
           >
             <div style={{ width: "24px", height: "1px", background: "#3a8b7c" }} />
-            <span style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.2em", textTransform: "uppercase" }}>Manifesto</span>
+            <span style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.2em", textTransform: "uppercase" }}>Quem somos</span>
             <div style={{ width: "24px", height: "1px", background: "#3a8b7c" }} />
           </div>
+
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#c8c4be",
+              letterSpacing: "0.04em",
+              marginBottom: "28px",
+              opacity: p > 0.08 ? 1 : 0,
+              transition: "opacity 0.5s",
+            }}
+          >
+            A Cluster Mining é uma mineradora brasileira. Nosso trabalho é explorar e desenvolver recursos minerais com responsabilidade.
+          </p>
 
           <p style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(1.8rem,4.5vw,3.2rem)", lineHeight: 1.2, color: "#e8e4de" }}>
             {words.map((w, i) => {
@@ -308,7 +369,7 @@ const METALS = [
     desc: "Do aço inoxidável às baterias de íons de lítio, o Níquel é o metal que alimenta a mobilidade elétrica e a infraestrutura sustentável do século XXI.",
     apps: ["Aço inoxidável", "Baterias de veículos elétricos", "Ligas de alta performance", "Geração de energia"],
     img: "https://images.unsplash.com/photo-1764022276404-85682f38ae35?w=1600&h=900&fit=crop&auto=format",
-    imgFilter: "brightness(0.35) saturate(0.9) hue-rotate(160deg)",
+    imgFilter: "brightness(0.72) saturate(0.95) contrast(1.05)",
   },
   {
     symbol: "Cu",
@@ -319,7 +380,7 @@ const METALS = [
     desc: "Presente em toda infraestrutura elétrica do planeta, o Cobre é indispensável para energias renováveis, eletrônica de consumo e construção civil.",
     apps: ["Condutores elétricos", "Painéis solares", "Eletrônicos", "Latão e bronze"],
     img: "https://images.unsplash.com/photo-1598125443624-9cca7bb8c633?w=1600&h=900&fit=crop&auto=format",
-    imgFilter: "brightness(0.3) saturate(1.1)",
+    imgFilter: "brightness(0.7) saturate(1.05) contrast(1.05)",
   },
   {
     symbol: "PGE",
@@ -330,204 +391,299 @@ const METALS = [
     desc: "Rutênio, Ródio, Paládio, Ósmio, Irídio e Platina — os seis elementos mais escassos e estratégicos do planeta, essenciais para catálise, eletrônica e joalheria.",
     apps: ["Catalisadores industriais", "Células de combustível", "Eletrônica de precisão", "Joias e luxo"],
     img: "https://images.unsplash.com/photo-1683464276767-bfac74dbd6b8?w=1600&h=900&fit=crop&auto=format",
-    imgFilter: "brightness(0.3) saturate(0.4)",
+    imgFilter: "brightness(0.68) saturate(0.55) contrast(1.05)",
   },
 ];
 
 function Metals() {
-  const outer = useRef<HTMLDivElement>(null);
-  const p = useScrollProgress(outer);
-  const panel = Math.min(2, Math.floor(p * 3));
-  const panelP = (p * 3) % 1;
+  const [panel, setPanel] = useState(0);
+  const [paused, setPaused] = useState(false);
   const current = METALS[panel];
-  const next = METALS[Math.min(2, panel + 1)];
-  const crossfade = panel < 2 && panelP > 0.7 ? (panelP - 0.7) / 0.3 : 0;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setPanel((i) => (i + 1) % METALS.length);
+    }, 5500);
+    return () => window.clearInterval(id);
+  }, [paused]);
+
+  function go(delta: number) {
+    setPanel((i) => (i + delta + METALS.length) % METALS.length);
+  }
 
   return (
-    <div ref={outer} id="metais" style={{ height: "400vh" }}>
-      <div className="cluster-sticky-panel" style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0 }}>
-          <img
-            src={current.img}
-            alt={current.name}
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: current.imgFilter, opacity: 1 - crossfade, transition: "opacity 0.3s" }}
-          />
-        </div>
-        {panel < 2 && (
-          <div style={{ position: "absolute", inset: 0, opacity: crossfade, transition: "opacity 0.3s" }}>
-            <img src={next.img} alt={next.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: next.imgFilter }} />
-          </div>
-        )}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(12,14,13,0.92) 45%, rgba(12,14,13,0.3) 100%)" }} />
-
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", padding: "0 6vw" }}>
-          <div style={{ maxWidth: "520px" }}>
-            <div style={{ display: "flex", gap: "8px", marginBottom: "32px" }}>
-              {METALS.map((m, i) => (
-                <div
-                  key={m.symbol}
-                  style={{ height: "2px", flex: 1, background: i === panel ? m.color : "rgba(232,228,222,0.15)", transition: "background 0.5s" }}
-                />
-              ))}
-            </div>
-
-            <div
-              style={{
-                fontSize: "11px",
-                color: current.color,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                marginBottom: "16px",
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <span style={{ fontFamily: "monospace", border: `1px solid ${current.color}`, padding: "2px 8px", opacity: 0.7 }}>{current.num}</span>
-              Commodities
-            </div>
-
-            <div
-              style={{
-                fontFamily: "'DM Serif Display',serif",
-                fontSize: "clamp(3.5rem,9vw,6.5rem)",
-                lineHeight: 0.95,
-                color: current.color,
-                marginBottom: "12px",
-                transition: "color 0.5s",
-              }}
-            >
-              {current.symbol}
-            </div>
-            <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(1.4rem,3vw,2rem)", color: "#e8e4de", marginBottom: "6px" }}>
-              {current.name}
-            </div>
-            <div style={{ fontSize: "13px", color: "#7a8078", fontStyle: "italic", marginBottom: "24px" }}>{current.tagline}</div>
-            <div style={{ width: "40px", height: "1px", background: current.color, marginBottom: "24px", transition: "background 0.5s" }} />
-            <p style={{ fontSize: "13px", color: "#c8c4be", lineHeight: 1.75, marginBottom: "28px" }}>{current.desc}</p>
-            <ul style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {current.apps.map((a) => (
-                <li key={a} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "12px", color: "#7a8078" }}>
-                  <span style={{ color: current.color }}>—</span>
-                  {a}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
+    <section
+      id="metais"
+      className="cluster-metals-carousel"
+      style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#0c0e0d" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {METALS.map((m, i) => (
         <div
+          key={m.symbol}
+          aria-hidden={i !== panel}
           style={{
             position: "absolute",
-            right: "6vw",
-            top: "50%",
-            transform: "translateY(-50%)",
-            fontFamily: "'DM Serif Display',serif",
-            fontSize: "clamp(8rem,18vw,14rem)",
-            color: current.color,
-            opacity: 0.06,
-            lineHeight: 1,
-            userSelect: "none",
-            transition: "color 0.5s",
+            inset: 0,
+            opacity: i === panel ? 1 : 0,
+            transition: "opacity 0.7s ease",
+            pointerEvents: i === panel ? "auto" : "none",
           }}
         >
-          {current.symbol}
+          <img
+            src={m.img}
+            alt={`Exploração de ${m.name}`}
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: m.imgFilter }}
+          />
         </div>
+      ))}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(12,14,13,0.88) 42%, rgba(12,14,13,0.25) 100%)" }} />
 
-        <div style={{ position: "absolute", bottom: "32px", right: "40px", fontSize: "10px", color: "#7a8078", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-          {panel + 1} / {METALS.length}
+      <div className="cluster-shell" style={{ position: "relative", zIndex: 2, minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: "100px", paddingBottom: "80px" }}>
+        <div style={{ maxWidth: "540px", width: "100%" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ width: "24px", height: "1px", background: current.color }} />
+            <span style={{ fontSize: "11px", color: current.color, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              Metais que exploramos
+            </span>
+          </div>
+
+          <div style={{ display: "flex", gap: "8px", marginBottom: "28px" }}>
+            {METALS.map((m, i) => (
+              <button
+                key={m.symbol}
+                type="button"
+                aria-label={`Ver ${m.name}`}
+                aria-current={i === panel}
+                onClick={() => setPanel(i)}
+                style={{
+                  height: "3px",
+                  flex: 1,
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  background: i === panel ? m.color : "rgba(232,228,222,0.2)",
+                  transition: "background 0.4s",
+                }}
+              />
+            ))}
+          </div>
+
+          <div
+            style={{
+              fontSize: "11px",
+              color: current.color,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <span style={{ fontFamily: "monospace", border: `1px solid ${current.color}`, padding: "2px 8px", opacity: 0.85 }}>{current.num}</span>
+            Commodities
+          </div>
+
+          <div
+            key={current.symbol}
+            className="cluster-metal-slide"
+            style={{
+              fontFamily: "'DM Serif Display',serif",
+              fontSize: "clamp(3.5rem,9vw,6.5rem)",
+              lineHeight: 0.95,
+              color: current.color,
+              marginBottom: "12px",
+            }}
+          >
+            {current.symbol}
+          </div>
+          <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(1.4rem,3vw,2rem)", color: "#e8e4de", marginBottom: "6px" }}>
+            {current.name}
+          </div>
+          <div style={{ fontSize: "13px", color: "#a8aea6", fontStyle: "italic", marginBottom: "24px" }}>{current.tagline}</div>
+          <div style={{ width: "40px", height: "1px", background: current.color, marginBottom: "24px" }} />
+          <p style={{ fontSize: "14px", color: "#d8d4ce", lineHeight: 1.75, marginBottom: "28px" }}>{current.desc}</p>
+          <ul style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "36px" }}>
+            {current.apps.map((a) => (
+              <li key={a} style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", color: "#a8aea6" }}>
+                <span style={{ color: current.color }}>—</span>
+                {a}
+              </li>
+            ))}
+          </ul>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Metal anterior"
+              style={{
+                width: "44px",
+                height: "44px",
+                border: "1px solid rgba(232,228,222,0.25)",
+                background: "rgba(12,14,13,0.5)",
+                color: "#e8e4de",
+                cursor: "pointer",
+                fontSize: "18px",
+              }}
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Próximo metal"
+              style={{
+                width: "44px",
+                height: "44px",
+                border: "1px solid rgba(232,228,222,0.25)",
+                background: "rgba(12,14,13,0.5)",
+                color: "#e8e4de",
+                cursor: "pointer",
+                fontSize: "18px",
+              }}
+            >
+              ›
+            </button>
+            <span style={{ fontSize: "11px", color: "#7a8078", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              {panel + 1} / {METALS.length}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div
+        style={{
+          position: "absolute",
+          right: "max(var(--cluster-gutter), calc((100% - var(--cluster-showcase)) / 2 + var(--cluster-gutter)))",
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontFamily: "'DM Serif Display',serif",
+          fontSize: "clamp(8rem,18vw,14rem)",
+          color: current.color,
+          opacity: 0.08,
+          lineHeight: 1,
+          userSelect: "none",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      >
+        {current.symbol}
+      </div>
+    </section>
   );
 }
 
 function Territory() {
-  const outer = useRef<HTMLDivElement>(null);
-  const p = useScrollProgress(outer);
-  const imgY = p * 60;
-  const textO = Math.min(1, (p - 0.1) * 2.5);
-  const textY = Math.max(0, (1 - (p - 0.1) * 2.5)) * 30;
-
   return (
-    <div ref={outer} id="territorio" style={{ height: "300vh" }}>
-      <div className="cluster-sticky-panel" style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: "-10%", transform: `translateY(${imgY}px)` }}>
-          <img
-            src="https://images.unsplash.com/photo-1599954024677-f2d7554b1f26?w=1800&h=1200&fit=crop&auto=format"
-            alt="Paisagem da região"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.4) saturate(0.6)" }}
-          />
-        </div>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(12,14,13,0.85) 40%, rgba(12,14,13,0.4) 100%)" }} />
+    <section id="territorio" style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#0c0e0d" }}>
+      <div style={{ position: "absolute", inset: 0 }}>
+        <img
+          src="https://images.unsplash.com/photo-1599954024677-f2d7554b1f26?w=1800&h=1200&fit=crop&auto=format"
+          alt="Paisagem da região de Limoeiro, Pernambuco"
+          style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.65) saturate(0.8) contrast(1.05)" }}
+        />
+      </div>
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(12,14,13,0.78) 38%, rgba(12,14,13,0.35) 100%)" }} />
 
-        <div
-          className="cluster-territory-grid"
-          style={{ position: "absolute", inset: 0, display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "center", padding: "0 6vw", gap: "60px" }}
-        >
-          <div style={{ opacity: textO, transform: `translateY(${textY}px)` }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
-              <div style={{ width: "24px", height: "1px", background: "#7b5470" }} />
-              <span style={{ fontSize: "11px", color: "#7b5470", letterSpacing: "0.2em", textTransform: "uppercase" }}>Onde Atuamos</span>
-            </div>
-            <h2 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(2.2rem,5vw,3.8rem)", lineHeight: 1.05, color: "#e8e4de", marginBottom: "24px" }}>
-              Limoeiro,
-              <br />
-              <em style={{ color: "#7b5470" }}>Pernambuco</em>
-            </h2>
-            <p style={{ fontSize: "13px", color: "#c8c4be", lineHeight: 1.8, marginBottom: "16px" }}>
-              Nossa área de operação está inserida na Província Borborema — um dos domínios geológicos mais promissores do Nordeste brasileiro, abrangendo
-              municípios como Limoeiro, Machados, Orobó e Bom Jardim.
-            </p>
-            <p style={{ fontSize: "12px", color: "#7a8078", lineHeight: 1.8, marginBottom: "36px" }}>
-              O depósito está associado a zonas de cisalhamento da orogênese brasiliana, contexto favorável à concentração de sulfetos de Ni–Cu e minerais do
-              grupo da platina.
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0" }}>
-              {["Limoeiro", "Machados", "Orobó", "Bom Jardim"].map((m) => (
-                <div
-                  key={m}
-                  style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 0", borderBottom: "1px solid rgba(232,228,222,0.07)" }}
-                >
-                  <span style={{ color: "#7b5470", fontSize: "10px" }}>◆</span>
-                  <span style={{ fontSize: "12px", color: "#c8c4be" }}>{m}</span>
-                </div>
-              ))}
-            </div>
+      <div
+        className="cluster-shell cluster-territory-grid"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          minHeight: "100vh",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          alignItems: "center",
+          paddingTop: "120px",
+          paddingBottom: "80px",
+          gap: "60px",
+        }}
+      >
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+            <div style={{ width: "24px", height: "1px", background: "#c9a0bc" }} />
+            <span style={{ fontSize: "11px", color: "#c9a0bc", letterSpacing: "0.2em", textTransform: "uppercase" }}>Onde a mineradora atua</span>
           </div>
-
-          <div style={{ opacity: Math.min(1, (p - 0.4) * 3), transform: `translateY(${Math.max(0, (1 - (p - 0.4) * 3)) * 40}px)` }}>
-            <div style={{ border: "1px solid rgba(123,84,112,0.35)", padding: "40px", background: "rgba(12,14,13,0.7)", backdropFilter: "blur(12px)" }}>
-              <div style={{ fontFamily: "monospace", fontSize: "10px", color: "#7a8078", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "24px" }}>
-                Contexto Geológico
+          <h2 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(2.2rem,5vw,3.8rem)", lineHeight: 1.05, color: "#e8e4de", marginBottom: "20px" }}>
+            Limoeiro,
+            <br />
+            <em style={{ color: "#c9a0bc" }}>Pernambuco</em>
+          </h2>
+          <p style={{ fontSize: "15px", color: "#e8e4de", lineHeight: 1.7, marginBottom: "14px" }}>
+            A Cluster Mining desenvolve o <strong style={{ fontWeight: 500 }}>Projeto Limoeiro</strong>: exploração mineral responsável na Província Borborema,
+            no Nordeste do Brasil.
+          </p>
+          <p style={{ fontSize: "14px", color: "#c8c4be", lineHeight: 1.8, marginBottom: "14px" }}>
+            Nossa área de operação abrange municípios como Limoeiro, Machados, Orobó e Bom Jardim — um dos domínios geológicos mais promissores da região.
+          </p>
+          <p style={{ fontSize: "13px", color: "#a8aea6", lineHeight: 1.8, marginBottom: "32px" }}>
+            O depósito está associado a zonas de cisalhamento da orogênese brasiliana, contexto favorável à concentração de sulfetos de Ni–Cu e minerais do
+            grupo da platina.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", marginBottom: "28px" }}>
+            {["Limoeiro", "Machados", "Orobó", "Bom Jardim"].map((m) => (
+              <div
+                key={m}
+                style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 0", borderBottom: "1px solid rgba(232,228,222,0.12)" }}
+              >
+                <span style={{ color: "#c9a0bc", fontSize: "10px" }}>◆</span>
+                <span style={{ fontSize: "13px", color: "#e8e4de" }}>{m}</span>
               </div>
-              {[
-                { label: "Domínio", value: "Província Borborema" },
-                { label: "Estrutura", value: "Zona de Cisalhamento" },
-                { label: "Orogênese", value: "Brasiliana (~600 Ma)" },
-                { label: "Tipo de projeto", value: "Greenfield" },
-                { label: "Alvo primário", value: "Sulfetos de Ni–Cu–PGE" },
-              ].map(({ label, value }) => (
-                <div
-                  key={label}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "12px 0",
-                    borderBottom: "1px solid rgba(232,228,222,0.07)",
-                    alignItems: "center",
-                    gap: "16px",
-                  }}
-                >
-                  <span style={{ fontSize: "10px", color: "#7a8078", textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</span>
-                  <span style={{ fontSize: "12px", color: "#c8c4be", textAlign: "right" }}>{value}</span>
-                </div>
-              ))}
+            ))}
+          </div>
+          <a
+            href="#contato"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "12px 22px",
+              border: "1px solid rgba(58,139,124,0.7)",
+              color: "#7dcec0",
+              fontSize: "11px",
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+            }}
+          >
+            Quero falar com a mineradora
+          </a>
+        </div>
+
+        <div>
+          <div style={{ border: "1px solid rgba(201,160,188,0.4)", padding: "40px", background: "rgba(12,14,13,0.72)", backdropFilter: "blur(12px)" }}>
+            <div style={{ fontFamily: "monospace", fontSize: "10px", color: "#a8aea6", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "24px" }}>
+              Contexto Geológico
             </div>
+            {[
+              { label: "Domínio", value: "Província Borborema" },
+              { label: "Estrutura", value: "Zona de Cisalhamento" },
+              { label: "Orogênese", value: "Brasiliana (~600 Ma)" },
+              { label: "Tipo de projeto", value: "Greenfield" },
+              { label: "Alvo primário", value: "Sulfetos de Ni–Cu–PGE" },
+            ].map(({ label, value }) => (
+              <div
+                key={label}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "12px 0",
+                  borderBottom: "1px solid rgba(232,228,222,0.1)",
+                  alignItems: "center",
+                  gap: "16px",
+                }}
+              >
+                <span style={{ fontSize: "10px", color: "#a8aea6", textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</span>
+                <span style={{ fontSize: "13px", color: "#e8e4de", textAlign: "right" }}>{value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -559,8 +715,8 @@ function Esg() {
   return (
     <div ref={outer} id="esg" style={{ height: "350vh", background: "#0e1210" }}>
       <div
-        className="cluster-sticky-panel"
-        style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 6vw" }}
+        className="cluster-sticky-panel cluster-shell"
+        style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: 0, paddingBottom: 0 }}
       >
         <div style={{ marginBottom: "60px", opacity: Math.min(1, p * 6), transform: `translateY(${Math.max(0, (1 - p * 6)) * 24}px)` }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
@@ -618,8 +774,8 @@ function Method() {
   return (
     <div ref={outer} id="metodo" style={{ height: "350vh", background: "#0c0e0d" }}>
       <div
-        className="cluster-sticky-panel"
-        style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 6vw" }}
+        className="cluster-sticky-panel cluster-shell"
+        style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: 0, paddingBottom: 0 }}
       >
         <div style={{ marginBottom: "56px", opacity: Math.min(1, p * 5), transform: `translateY(${Math.max(0, (1 - p * 5)) * 20}px)` }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
@@ -706,21 +862,25 @@ function Method() {
 
 function Contact() {
   return (
-    <section id="contato" style={{ minHeight: "100vh", background: "#0c0e0d", display: "flex", alignItems: "center", padding: "120px 6vw" }}>
+    <section id="contato" style={{ minHeight: "100vh", background: "#0c0e0d", display: "flex", alignItems: "center", paddingTop: "120px", paddingBottom: "120px" }}>
       <div
-        className="cluster-contact-grid"
-        style={{ maxWidth: "1280px", margin: "0 auto", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}
+        className="cluster-shell cluster-contact-grid"
+        style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}
       >
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
             <div style={{ width: "24px", height: "1px", background: "#3a8b7c" }} />
-            <span style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.2em", textTransform: "uppercase" }}>Contato</span>
+            <span style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.2em", textTransform: "uppercase" }}>Fale com a Cluster Mining</span>
           </div>
           <h2 style={{ fontFamily: "'DM Serif Display',serif", fontSize: "clamp(2rem,4.5vw,3.5rem)", color: "#e8e4de", lineHeight: 1.1, marginBottom: "24px" }}>
-            Bons ouvidos fazem parte do nosso DNA
+            Entre em contato com a mineradora
           </h2>
-          <p style={{ fontSize: "13px", color: "#7a8078", lineHeight: 1.8, maxWidth: "420px", marginBottom: "48px" }}>
-            Seja você investidor, parceiro, pesquisador ou membro da comunidade — queremos ouvir. Fale conosco pelos canais abaixo.
+          <p style={{ fontSize: "14px", color: "#c8c4be", lineHeight: 1.8, maxWidth: "440px", marginBottom: "16px" }}>
+            Seja investidor, parceiro, pesquisador ou membro da comunidade — a Cluster Mining está aberta ao diálogo sobre o Projeto Limoeiro e nossas
+            operações de exploração mineral.
+          </p>
+          <p style={{ fontSize: "13px", color: "#a8aea6", lineHeight: 1.8, maxWidth: "440px", marginBottom: "40px" }}>
+            Prefere agilidade? Chame no WhatsApp ou envie um e-mail. Respondemos com atenção.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -781,8 +941,12 @@ function Contact() {
         </div>
 
         <div style={{ border: "1px solid rgba(232,228,222,0.08)", padding: "48px" }}>
-          <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "22px", color: "#e8e4de", marginBottom: "6px" }}>Projeto Limoeiro</div>
-          <div style={{ fontSize: "11px", color: "#7a8078", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "36px" }}>
+          <div style={{ fontSize: "11px", color: "#3a8b7c", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "8px" }}>
+            Sobre a empresa
+          </div>
+          <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "22px", color: "#e8e4de", marginBottom: "6px" }}>Cluster Mining</div>
+          <div style={{ fontSize: "13px", color: "#c8c4be", marginBottom: "8px" }}>Mineradora · Projeto Limoeiro</div>
+          <div style={{ fontSize: "11px", color: "#7a8078", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "28px" }}>
             Província Borborema · Pernambuco
           </div>
           {[
@@ -824,7 +988,7 @@ function Contact() {
               e.currentTarget.style.background = "#3a8b7c";
             }}
           >
-            Falar no WhatsApp
+            Falar no WhatsApp agora
           </a>
         </div>
       </div>
@@ -834,8 +998,8 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid rgba(232,228,222,0.07)", padding: "32px 6vw", background: "#0c0e0d" }}>
-      <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+    <footer style={{ borderTop: "1px solid rgba(232,228,222,0.07)", paddingTop: "32px", paddingBottom: "32px", background: "#0c0e0d" }}>
+      <div className="cluster-shell" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
         <a href="#hero">
           <Logo height={48} />
         </a>

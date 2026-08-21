@@ -14,31 +14,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "glowing",
-    title: "Glowing",
-    description: {
-      pt: "Landing page Glowing para consultoria em colorimetria pessoal.",
-      en: "Glowing landing page for personal color analysis consulting.",
-    },
-    tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
-    imageAlt: "Logo Glowing no modo claro",
-    cover: "glowing-logo-light",
-    path: "/projetos/glowing",
-  },
-  {
-    id: "nuuma",
-    title: "NUUMA",
-    description: {
-      pt: "Landing page de telessaúde para cannabis medicinal — jornada de acolhimento do médico ao medicamento.",
-      en: "Telehealth landing page for medical cannabis — a guided journey from doctor to medication.",
-    },
-    tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=500&fit=crop&auto=format&q=70",
-    imageAlt: "Preview do projeto NUUMA",
-    path: "/projetos/nuuma",
-  },
-  {
     id: "cluster",
     title: "Cluster Mining",
     description: {
@@ -49,5 +24,30 @@ export const projects: Project[] = [
     imageAlt: "Logo Cluster Mining",
     cover: "cluster-logo",
     path: "/projetos/cluster",
+  },
+  {
+    id: "nuuma",
+    title: "NUUMA",
+    description: {
+      pt: "Landing page de telessaúde para cannabis medicinal — jornada de acolhimento do médico ao medicamento.",
+      en: "Telehealth landing page for medical cannabis — a guided journey from doctor to medication.",
+    },
+    tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
+    image: "/figma/nuuma-preview.png",
+    imageAlt: "Preview do projeto NUUMA",
+    path: "/projetos/nuuma",
+  },
+  {
+    id: "glowing",
+    title: "Glowing",
+    description: {
+      pt: "Landing page Glowing para consultoria em colorimetria pessoal.",
+      en: "Glowing landing page for personal color analysis consulting.",
+    },
+    tags: ["Figma", "React", "TypeScript", "Tailwind CSS"],
+    image: "/figma/glowing-preview.png",
+    imageAlt: "Logo Glowing no modo claro",
+    cover: "glowing-logo-light",
+    path: "/projetos/glowing",
   },
 ];

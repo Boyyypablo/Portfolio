@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Fraunces:ital,opsz,wght@1,9..144,300&display=swap");
+
+@import "./bootstrap-theme.css";
+
 @import 'tailwindcss' source(none);
 @source '../../**/*.{js,ts,jsx,tsx}';
 @import './default_theme.css';

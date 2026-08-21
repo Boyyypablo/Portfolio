@@ -1,108 +1,113 @@
 import { useLanguage } from "../context/LanguageContext";
 import { Cascade } from "./Cascade";
 
+type SkillIcon = {
+  src: string;
+  alt: string;
+  /** Fundo do círculo (estilo dos ícones de IA) */
+  bg?: string;
+  /** object-fit / padding do logo */
+  className?: string;
+};
+
+function SkillIconCircle({ icon }: { icon: SkillIcon }) {
+  return (
+    <div
+      className="size-[72px] overflow-hidden rounded-full border border-white/15 shadow-md md:size-[96px]"
+      style={{ backgroundColor: icon.bg ?? "#FFFFFF" }}
+      title={icon.alt}
+    >
+      <img
+        src={icon.src}
+        alt={icon.alt}
+        width={96}
+        height={96}
+        className={`size-full ${icon.className ?? "object-contain p-[22%]"}`}
+      />
+    </div>
+  );
+}
+
+const aiIcons: SkillIcon[] = [
+  { src: "/figma/skills/git-worktree.png", alt: "Git Worktree", bg: "#F4F7FA", className: "object-contain p-2" },
+  { src: "/figma/skills/mcp.png", alt: "MCP", bg: "#000000", className: "object-cover" },
+  { src: "/figma/skills/llm.png", alt: "LLM", bg: "#FFFFFF", className: "object-cover" },
+  { src: "/figma/skills/cursor.png", alt: "Cursor", bg: "#12110E", className: "object-cover" },
+  { src: "/figma/skills/ollama.svg", alt: "Ollama", bg: "#FFFFFF", className: "object-contain p-[22%]" },
+];
+
+const dataIcons: SkillIcon[] = [
+  { src: "/figma/skills/powerbi.svg", alt: "Power BI", bg: "transparent", className: "object-cover" },
+  { src: "/figma/skills/databricks.svg", alt: "Databricks", bg: "#FFFFFF", className: "object-contain p-[18%]" },
+  { src: "/figma/skills/python.svg", alt: "Python", bg: "#FFFFFF" },
+  { src: "/figma/skills/postgresql.svg", alt: "SQL", bg: "#FFFFFF" },
+  { src: "/figma/skills/database.svg", alt: "Modelagem de dados", bg: "transparent", className: "object-cover" },
+];
+
+const devIcons: SkillIcon[] = [
+  { src: "/figma/skills/oracle.svg", alt: "Oracle APEX", bg: "#FFFFFF" },
+  { src: "/figma/skills/nodedotjs.svg", alt: "Node.js", bg: "#FFFFFF" },
+  { src: "/figma/skills/express.svg", alt: "Express", bg: "#FFFFFF" },
+  { src: "/figma/skills/rest.png", alt: "APIs REST", bg: "#FFFFFF", className: "object-contain p-[10%]" },
+  { src: "/figma/skills/react.svg", alt: "React", bg: "#20232A" },
+  { src: "/figma/skills/typescript.svg", alt: "TypeScript", bg: "#FFFFFF" },
+];
+
+const designIcons: SkillIcon[] = [
+  { src: "/figma/skills/figma.svg", alt: "Figma", bg: "#FFFFFF" },
+  { src: "/figma/skills/uiux.png", alt: "UI/UX", bg: "#FFFFFF", className: "object-contain p-[12%]" },
+  { src: "/figma/skills/landing.png", alt: "Landing pages", bg: "#FFFFFF", className: "object-contain p-[10%]" },
+];
+
+const toolsIcons: SkillIcon[] = [
+  { src: "/figma/skills/github.svg", alt: "Git / GitHub", bg: "#FFFFFF" },
+  { src: "/figma/skills/scrum.svg", alt: "Scrum", bg: "transparent", className: "object-cover" },
+  { src: "/figma/skills/trello.svg", alt: "Kanban", bg: "#FFFFFF" },
+  { src: "/figma/skills/word.png", alt: "Word", bg: "transparent", className: "object-cover" },
+  { src: "/figma/skills/excel.png", alt: "Excel", bg: "#FFFFFF", className: "object-contain p-[12%]" },
+  { src: "/figma/skills/teams.png", alt: "Teams", bg: "#FFFFFF", className: "object-contain p-[12%]" },
+  { src: "/figma/skills/powerautomate.svg", alt: "Power Automate", bg: "#FFFFFF", className: "object-contain p-[14%]" },
+];
+
 export function Skills() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const skillCategories = [
-    {
-      category: t("skills.ai"),
-      skills:
-        language === "pt"
-          ? [
-              "Agentic coding (planejar, tools, verificar)",
-              "Git worktree e parallel agents",
-              "Engenharia de prompts",
-              "LLMs (GPT-4, GPT-4o, Claude, Gemini)",
-              "MCP, skills e human-in-the-loop",
-            ]
-          : [
-              "Agentic coding (plan, tools, verify)",
-              "Git worktree and parallel agents",
-              "Prompt engineering",
-              "LLMs (GPT-4, GPT-4o, Claude, Gemini)",
-              "MCP, skills, and human-in-the-loop",
-            ],
-      color: "from-[#A39382] to-[#685D54]",
-    },
-    {
-      category: t("skills.data"),
-      skills:
-        language === "pt"
-          ? [
-              "Power BI (DAX e Power Query)",
-              "Limpeza, modelagem e preparação de dados",
-              "Databricks (lakehouse, notebooks e pipelines)",
-            ]
-          : [
-              "Power BI (DAX and Power Query)",
-              "Data cleaning, modeling, and preparation",
-              "Databricks (lakehouse, notebooks, and pipelines)",
-            ],
-      color: "from-[#685D54] to-[#232323]",
-    },
-    {
-      category: t("skills.languages"),
-      skills: ["Python", "SQL", "JavaScript", "HTML/CSS", "Java", "C"],
-      color: "from-[#232323] to-[#685D54]",
-    },
-    {
-      category: t("skills.dev"),
-      skills: ["Oracle APEX", "Node.js", "Express", "APIs REST"],
-      color: "from-[#A39382] to-[#685D54]",
-    },
-    {
-      category: t("skills.db"),
-      skills:
-        language === "pt"
-          ? ["PostgreSQL", "Oracle", "MySQL", "MongoDB", "Modelagem de schema e performance"]
-          : ["PostgreSQL", "Oracle", "MySQL", "MongoDB", "Schema modeling and performance"],
-      color: "from-[#685D54] to-[#232323]",
-    },
-    {
-      category: t("skills.design"),
-      skills:
-        language === "pt"
-          ? ["Figma (prototipagem e UI)", "Landing pages", "UI/UX e design responsivo"]
-          : ["Figma (prototyping and UI)", "Landing pages", "UI/UX and responsive design"],
-      color: "from-[#232323] to-[#685D54]",
-    },
-    {
-      category: t("skills.tools"),
-      skills:
-        language === "pt"
-          ? ["Git e GitHub", "Microsoft Office", "SharePoint e Microsoft Teams", "Scrum e Kanban"]
-          : ["Git and GitHub", "Microsoft Office", "SharePoint and Microsoft Teams", "Scrum and Kanban"],
-      color: "from-[#A39382] to-[#685D54]",
-    },
+    { category: t("skills.ai"), icons: aiIcons },
+    { category: t("skills.data"), icons: dataIcons },
+    { category: t("skills.dev"), icons: devIcons },
+    { category: t("skills.design"), icons: designIcons },
+    { category: t("skills.tools"), icons: toolsIcons },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#FBF7F4] via-white to-[#E5DED2]">
+    <section className="bg-[#685D54] py-20">
       <div className="container mx-auto px-6">
-        <Cascade className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl mb-4 text-[#232323]">{t("skills.title")}</h2>
-          <p className="text-lg text-[#685D54]">{t("skills.description")}</p>
+        <Cascade className="mb-14 text-center">
+          <h2 className="mb-4 text-4xl text-[#232323] md:text-5xl" style={{ color: "#232323" }}>
+            {t("skills.title")}
+          </h2>
+          <p className="text-lg text-[#E5DED2]">{t("skills.description")}</p>
         </Cascade>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           {skillCategories.map((category, categoryIndex) => (
             <Cascade
-              key={categoryIndex}
-              className="bg-white/90 rounded-3xl p-8 border border-[#E5DED2]"
+              key={category.category}
+              className={`space-y-5 ${
+                categoryIndex === skillCategories.length - 1
+                  ? "md:col-span-2 md:mx-auto md:w-full md:max-w-4xl"
+                  : ""
+              }`}
               delay={categoryIndex * 90}
             >
-              <div
-                className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${category.color} text-white mb-6`}
-              >
+              <div className="inline-flex rounded-full bg-gradient-to-r from-[#E1DFDF] to-[#94908D] px-6 py-2 text-base text-black">
                 {category.category}
               </div>
-              <div className="space-y-3">
-                {category.skills.map((skill) => (
-                  <div key={skill} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#A39382] to-[#685D54] flex-shrink-0" />
-                    <span className="text-[#232323]">{skill}</span>
-                  </div>
+
+              <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                {category.icons.map((icon) => (
+                  <SkillIconCircle key={icon.alt} icon={icon} />
                 ))}
               </div>
             </Cascade>

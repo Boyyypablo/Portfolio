@@ -1,12 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
 
 .cluster-root {
+  --cluster-showcase: 1440px;
+  --cluster-gutter: 48px;
   min-height: 100vh;
   overflow-x: clip;
   background: #0c0e0d;
   color: #e8e4de;
   font-family: "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Grade de montagem — conteúdo alinhado a 1440px */
+.cluster-shell {
+  width: 100%;
+  max-width: var(--cluster-showcase);
+  margin-inline: auto;
+  padding-inline: var(--cluster-gutter);
+  box-sizing: border-box;
 }
 
 .cluster-root a {
@@ -69,12 +80,31 @@
   animation: clusterPulseH 1.8s ease-in-out infinite;
 }
 
+@keyframes clusterMetalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cluster-root .cluster-metal-slide {
+  animation: clusterMetalIn 0.45s ease both;
+}
+
 @media (max-width: 900px) {
+  .cluster-root {
+    --cluster-gutter: 20px;
+  }
+
   .cluster-territory-grid,
   .cluster-contact-grid {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
-    overflow: auto;
+    overflow: visible;
     align-content: start;
     padding-top: 96px !important;
     padding-bottom: 40px !important;
@@ -88,6 +118,10 @@
   .cluster-sticky-panel {
     overflow: auto !important;
     height: 100dvh !important;
+  }
+
+  .cluster-metals-carousel {
+    min-height: auto !important;
   }
 }
 
